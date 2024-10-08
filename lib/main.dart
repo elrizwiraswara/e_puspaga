@@ -19,6 +19,8 @@ import 'view_model/profile_view_model.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  setupLocator();
+
   await Firebase.initializeApp(
     name: 'e-puspaga',
     options: const FirebaseOptions(
