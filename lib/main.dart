@@ -6,8 +6,15 @@ import 'app/const/app_const.dart';
 import 'app/locale/app_locale.dart';
 import 'app/routes/app_route.dart';
 import 'app/services/dialog/dialog_manager.dart';
+import 'app/services/locator/locator.dart';
 import 'app/themes/app_theme.dart';
 import 'view/splash/splash_view.dart';
+import 'view_model/auth_view_model.dart';
+import 'view_model/home_admin_view_model.dart';
+import 'view_model/home_client_view_model.dart';
+import 'view_model/home_conselor_view_model.dart';
+import 'view_model/main_view_model.dart';
+import 'view_model/profile_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +39,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: const [],
+      providers: [
+        ChangeNotifierProvider(create: (_) => locator<MainViewModel>()),
+        ChangeNotifierProvider(create: (_) => locator<AuthViewModel>()),
+        ChangeNotifierProvider(create: (_) => locator<ProfileViewModel>()),
+        ChangeNotifierProvider(create: (_) => locator<HomeClientViewModel>()),
+        ChangeNotifierProvider(create: (_) => locator<HomeConselorViewModel>()),
+        ChangeNotifierProvider(create: (_) => locator<HomeAdminViewModel>()),
+      ],
       child: MaterialApp(
         title: 'E-Puspaga Dumai',
         theme: AppTheme.appTheme(),
